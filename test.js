@@ -54,6 +54,7 @@ obj.on('derpa', function() {
 obj.on('herpa', function() {
   derp.derp()
 })
+
 console.log('All at once...')
 console.log('==============')
 obj.herp()
