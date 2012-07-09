@@ -2,11 +2,15 @@ module.exports = instanceProtoMixin
 
 var hasOwn = Object.prototype.hasOwnProperty
   , toString = Object.prototype.toString
+  , slice = Array.prototype.slice
 
 function isFunction(obj) {
   return toString.call(obj) == '[object Function]'
 }
 
+/**
+ * An extend() which uses the prototype instead if you give it a Function.
+ */
 function mixin(dest) {
   for (var i = 1, l = arguments.length, src; i < l; i++) {
     src = arguments[i]
@@ -23,6 +27,12 @@ function mixin(dest) {
   return dest
 }
 
-function instanceProtoMixin(obj, src) {
-  obj.__proto__ = mixin(Object.create(obj.__proto__), src.prototype)
+/**
+ * Effectively mixes in any additional arguments into the given object's
+ * original [[Prototype]], which ends up one step further down the prototype
+ * chain on each call. Mixed in properties will take precedence.
+ */
+function instanceProtoMixin(obj) {
+  var args = [Object.create(obj.__proto__)].concat(slice.call(arguments, 1))
+  obj.__proto__ = mixin.apply(null, args)
 }

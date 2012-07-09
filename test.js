@@ -44,3 +44,19 @@ console.log('Herpa and Derpa')
 console.log('===============')
 derp.emit('herpa')
 derp.emit('derpa')
+console.log()
+
+var obj = {}
+instanceProtoMixin(obj, Herp, Derp, EventEmitter)
+obj.on('derpa', function() {
+  derp.herp()
+})
+obj.on('herpa', function() {
+  derp.derp()
+})
+console.log('All at once...')
+console.log('==============')
+obj.herp()
+obj.derp()
+obj.emit('herpa')
+obj.emit('derpa')
