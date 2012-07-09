@@ -1,4 +1,4 @@
-module.exports = instanceProtoMixin
+module.exports = mixinstance
 
 var hasOwn = Object.prototype.hasOwnProperty
   , toString = Object.prototype.toString
@@ -32,7 +32,7 @@ function mixin(dest) {
  * original [[Prototype]], which ends up one step further down the prototype
  * chain on each call. Mixed in properties will take precedence.
  */
-function instanceProtoMixin(obj) {
+function mixinstance(obj) {
   var args = [Object.create(obj.__proto__)].concat(slice.call(arguments, 1))
   obj.__proto__ = mixin.apply(null, args)
 }

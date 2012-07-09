@@ -1,4 +1,4 @@
-var instanceProtoMixin = require('./instanceProtoMixin')
+var mixinstance = require('./mixinstance')
 
 function Herp() {}
 Herp.prototype.herp = function() { console.log('Herp') }
@@ -8,7 +8,7 @@ Derp.prototype.derp = function() { console.log('Derp') }
 
 var preDerp = new Derp()
 var derp = new Derp()
-instanceProtoMixin(derp, Herp)
+mixinstance(derp, Herp)
 var postDerp = new Derp()
 
 console.log('instanceof Derp?')
@@ -16,6 +16,13 @@ console.log('================')
 console.log('preDerp:  ' + (preDerp instanceof Derp))
 console.log('derp:     ' + (derp instanceof Derp))
 console.log('postDerp: ' + (postDerp instanceof Derp))
+console.log()
+
+console.log('.constructor === Derp?')
+console.log('======================')
+console.log('preDerp:  ' + (preDerp.constructor === Derp))
+console.log('derp:     ' + (derp.constructor === Derp))
+console.log('postDerp: ' + (postDerp.constructor === Derp))
 console.log()
 
 console.log('Has .herp?')
@@ -32,7 +39,7 @@ derp.herp()
 console.log()
 
 var EventEmitter = require('events').EventEmitter
-instanceProtoMixin(derp, EventEmitter)
+mixinstance(derp, EventEmitter)
 derp.on('derpa', function() {
   this.herp()
 })
@@ -47,7 +54,7 @@ derp.emit('derpa')
 console.log()
 
 var obj = {}
-instanceProtoMixin(obj, Herp, Derp, EventEmitter)
+mixinstance(obj, Herp, Derp, EventEmitter)
 obj.on('derpa', function() {
   this.herp()
 })
