@@ -25,6 +25,8 @@ Example
 Whoops, we already have an instance but now, as many have asked since the dawn
 of time, how can I 'be' Goro?
 
+::
+
    var mixinstance = require('mixinstance')
 
    mixinstance(player1, Goro)
