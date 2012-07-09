@@ -34,10 +34,10 @@ console.log()
 var EventEmitter = require('events').EventEmitter
 instanceProtoMixin(derp, EventEmitter)
 derp.on('derpa', function() {
-  derp.herp()
+  this.herp()
 })
 derp.on('herpa', function() {
-  derp.derp()
+  this.derp()
 })
 
 console.log('Herpa and Derpa')
@@ -49,10 +49,10 @@ console.log()
 var obj = {}
 instanceProtoMixin(obj, Herp, Derp, EventEmitter)
 obj.on('derpa', function() {
-  derp.herp()
+  this.herp()
 })
 obj.on('herpa', function() {
-  derp.derp()
+  this.derp()
 })
 
 console.log('All at once...')
