@@ -1,13 +1,13 @@
 instanceof Derp?
 ================
-preDerp: true
-derp: true
+preDerp:  true
+derp:     true
 postDerp: true
 
 Has .herp?
 ==========
-preDerp: undefined
-derp: function
+preDerp:  undefined
+derp:     function
 postDerp: undefined
 
 Herp and Derp
